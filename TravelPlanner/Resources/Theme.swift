@@ -8,8 +8,11 @@
 
 import UIKit
 class Theme {
-    static let mainFontName = "Coneria Script Demo"
-    static let accent = UIColor(named: "Accent")
-    static let background = UIColor(named: "Background")
-    static let tint = UIColor(named: "Tint")
+    static let tripListFontName = "Coneria Script Demo"
+    static let popUpLabelFontName = "Calypsoka"
+    static let buttonFontName = "Stardust Adventure"
+    static let Accent = UIColor(named: "Accent")
+    static let Background = UIColor(named: "Background")
+    static let Tint = UIColor(named: "Tint")
+    static let LabelColor = UIColor(named: "Label")
 }

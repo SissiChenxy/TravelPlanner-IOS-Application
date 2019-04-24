@@ -22,7 +22,7 @@ class TripsViewController: UIViewController{
         
         TripFunctions.readTrips()
         self.tableView.reloadData()
-        view.backgroundColor = Theme.background
+        view.backgroundColor = Theme.Background
         
         addButton.createFloatingFunctionButton();
     }

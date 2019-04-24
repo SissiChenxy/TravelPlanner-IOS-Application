@@ -24,6 +24,11 @@
 		23BB534D226FEB6700C43C9E /* StardustAdventure.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23BB534C226FEA0200C43C9E /* StardustAdventure.ttf */; };
 		23BB5351226FECBB00C43C9E /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23BB5350226FECBB00C43C9E /* Colors.xcassets */; };
 		23BB53532270323100C43C9E /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BB53522270323100C43C9E /* UIButtonExtension.swift */; };
+		23BB5355227039A300C43C9E /* AddTripViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23BB5354227039A300C43C9E /* AddTripViewController.storyboard */; };
+		23BB535A22703A4800C43C9E /* AddTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BB535922703A4800C43C9E /* AddTripViewController.swift */; };
+		23BB535D2270406500C43C9E /* PopUpUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BB535C2270406500C43C9E /* PopUpUIView.swift */; };
+		23BB53622270435500C43C9E /* Calypsoka.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23BB53602270424600C43C9E /* Calypsoka.ttf */; };
+		23BB53642270440800C43C9E /* AppButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BB53632270440800C43C9E /* AppButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +51,11 @@
 		23BB534C226FEA0200C43C9E /* StardustAdventure.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = StardustAdventure.ttf; sourceTree = "<group>"; };
 		23BB5350226FECBB00C43C9E /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		23BB53522270323100C43C9E /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
+		23BB5354227039A300C43C9E /* AddTripViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddTripViewController.storyboard; sourceTree = "<group>"; };
+		23BB535922703A4800C43C9E /* AddTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTripViewController.swift; sourceTree = "<group>"; };
+		23BB535C2270406500C43C9E /* PopUpUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpUIView.swift; sourceTree = "<group>"; };
+		23BB53602270424600C43C9E /* Calypsoka.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Calypsoka.ttf; sourceTree = "<group>"; };
+		23BB53632270440800C43C9E /* AppButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +89,6 @@
 			isa = PBXGroup;
 			children = (
 				23BB5347226FE63E00C43C9E /* Resources */,
-				23BB5344226FE0E500C43C9E /* Extensions */,
 				2364C2ED226C33F600B31FBD /* View */,
 				2364C2E7226C2F9300B31FBD /* Model */,
 				2364C2D2226991E900B31FBD /* AppDelegate.swift */,
@@ -113,6 +122,7 @@
 		2364C2ED226C33F600B31FBD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				23BB5356227039BA00C43C9E /* AddTripViewController */,
 				2364C2EE226C340500B31FBD /* TripsViewController */,
 			);
 			path = View;
@@ -140,12 +150,41 @@
 		23BB5347226FE63E00C43C9E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				23BB534C226FEA0200C43C9E /* StardustAdventure.ttf */,
-				23BB534A226FE83C00C43C9E /* ConeriaScript.ttf */,
+				23BB53612270424B00C43C9E /* Fonts */,
+				23BB5344226FE0E500C43C9E /* Extensions */,
+				23BB535B2270400C00C43C9E /* CustomerControls */,
 				23BB5348226FE65700C43C9E /* Theme.swift */,
 				23BB5350226FECBB00C43C9E /* Colors.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		23BB5356227039BA00C43C9E /* AddTripViewController */ = {
+			isa = PBXGroup;
+			children = (
+				23BB5354227039A300C43C9E /* AddTripViewController.storyboard */,
+				23BB535922703A4800C43C9E /* AddTripViewController.swift */,
+			);
+			path = AddTripViewController;
+			sourceTree = "<group>";
+		};
+		23BB535B2270400C00C43C9E /* CustomerControls */ = {
+			isa = PBXGroup;
+			children = (
+				23BB535C2270406500C43C9E /* PopUpUIView.swift */,
+				23BB53632270440800C43C9E /* AppButton.swift */,
+			);
+			path = CustomerControls;
+			sourceTree = "<group>";
+		};
+		23BB53612270424B00C43C9E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				23BB534C226FEA0200C43C9E /* StardustAdventure.ttf */,
+				23BB53602270424600C43C9E /* Calypsoka.ttf */,
+				23BB534A226FE83C00C43C9E /* ConeriaScript.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,8 +247,10 @@
 			files = (
 				2364C2E0226991ED00B31FBD /* LaunchScreen.storyboard in Resources */,
 				2364C2DD226991ED00B31FBD /* Assets.xcassets in Resources */,
+				23BB53622270435500C43C9E /* Calypsoka.ttf in Resources */,
 				23BB534B226FE85900C43C9E /* ConeriaScript.ttf in Resources */,
 				23BB534D226FEB6700C43C9E /* StardustAdventure.ttf in Resources */,
+				23BB5355227039A300C43C9E /* AddTripViewController.storyboard in Resources */,
 				2364C2F0226C342A00B31FBD /* TripsViewController.storyboard in Resources */,
 				2364C2D8226991E900B31FBD /* Main.storyboard in Resources */,
 				23BB5351226FECBB00C43C9E /* Colors.xcassets in Resources */,
@@ -230,7 +271,10 @@
 				2364C2EC226C2FE600B31FBD /* TripFunctions.swift in Sources */,
 				2364C2D5226991E900B31FBD /* ViewController.swift in Sources */,
 				2364C2F2226C344900B31FBD /* TripsViewController.swift in Sources */,
+				23BB535A22703A4800C43C9E /* AddTripViewController.swift in Sources */,
 				23BB5346226FE0FA00C43C9E /* UIViewExtension.swift in Sources */,
+				23BB53642270440800C43C9E /* AppButton.swift in Sources */,
+				23BB535D2270406500C43C9E /* PopUpUIView.swift in Sources */,
 				23BB5343226DA55D00C43C9E /* TripsTableViewCell.swift in Sources */,
 				2364C2D3226991E900B31FBD /* AppDelegate.swift in Sources */,
 			);

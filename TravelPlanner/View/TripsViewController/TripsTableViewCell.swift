@@ -17,8 +17,8 @@ class TripsTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         cardView.addShadowAndRoundedCorners();
-        cardView.backgroundColor = Theme.accent
-        label.font = UIFont(name: Theme.mainFontName, size: 32)
+        cardView.backgroundColor = Theme.Accent
+        label.font = UIFont(name: Theme.tripListFontName, size: 32)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
