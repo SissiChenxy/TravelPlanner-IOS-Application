@@ -26,6 +26,17 @@ class TripsViewController: UIViewController{
         
         addButton.createFloatingFunctionButton();
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toAddTripSegue"{
+            let popUp = segue.destination as! AddTripViewController
+            popUp.doneSaving = { [weak self] in
+                //parse the whole view controller into other view controller
+                TripFunctions.readTrips()
+                self?.tableView.reloadData()
+            }
+        }
+    }
 }
 
 

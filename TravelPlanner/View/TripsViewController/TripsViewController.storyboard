@@ -65,7 +65,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <state key="normal" image="plusIcon"/>
                                 <connections>
-                                    <segue destination="rsn-DC-4Zx" kind="presentation" id="hqa-yT-iBt"/>
+                                    <segue destination="rsn-DC-4Zx" kind="presentation" identifier="toAddTripSegue" id="hqa-yT-iBt"/>
                                 </connections>
                             </button>
                         </subviews>

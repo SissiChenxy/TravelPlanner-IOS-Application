@@ -37,7 +37,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DKf-co-Kis" customClass="AppButton" customModule="TravelPlanner" customModuleProvider="target">
-                                        <rect key="frame" x="210" y="114" width="60" height="30"/>
+                                        <rect key="frame" x="210" y="114" width="70" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                         <state key="normal" title="Save"/>
                                         <connections>
@@ -52,6 +52,10 @@
                                             <action selector="cancel:" destination="buf-Kh-3sV" eventType="touchUpInside" id="rMa-Sw-EO5"/>
                                         </connections>
                                     </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e3P-de-SPd">
+                                        <rect key="frame" x="272" y="62" width="30" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -61,6 +65,7 @@
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="kTU-dC-PjY" id="j4T-tU-OG8"/>
+                        <outlet property="errorImage" destination="e3P-de-SPd" id="JZp-Eb-qwn"/>
                         <outlet property="saveButton" destination="DKf-co-Kis" id="IpT-gL-b9r"/>
                         <outlet property="titleLabel" destination="VbO-zj-Ydf" id="eIx-Ns-CGm"/>
                         <outlet property="tripTextField" destination="fcO-Rb-1pp" id="aW0-2U-Tuk"/>
