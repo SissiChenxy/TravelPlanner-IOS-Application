@@ -27,6 +27,10 @@ class TripsViewController: UIViewController{
         addButton.createFloatingFunctionButton();
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toAddTripSegue"{
             let popUp = segue.destination as! AddTripViewController
@@ -44,7 +48,8 @@ class TripsViewController: UIViewController{
 extension TripsViewController : UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Data.trips.count
+        guard let trips = TripFunctions.readTrips().fetchedObjects else {return 0}
+        return trips.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -57,14 +62,40 @@ extension TripsViewController : UITableViewDataSource, UITableViewDelegate{
 //            image = UIImage(data:filtedObjs[indexPath.row].img!)!
 //        }else{
 //            }
+        let trip = TripFunctions.readTrips().fetchedObjects![indexPath.row]
         
-        cell.setup(trip: Data.trips[indexPath.row])
-        cell.textLabel?.text = Data.trips[indexPath.row].title
+        cell.setup(trip: trip)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 160
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+       
+        let trip:Trip = TripFunctions.readTrips().object(at: indexPath)
+        
+        let delete = UIContextualAction(style: .destructive, title: "Delete"){(contextualAction, view, actionPerformed:@escaping (Bool) -> ()) in
+            
+            let alert = UIAlertController(title: "Delete Trip", message: "Are you sure you want to delete this trip: \(trip.title!)?", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Delete", style:.default,handler: {
+                (alertAction) in
+                TripFunctions.deleteTrip(title: trip.title!)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                actionPerformed(true)
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style:.cancel,handler: {
+                (alertAction) in
+                actionPerformed(false)
+            }))
+            self.present(alert, animated: true)
+        }
+        delete.image = UIImage(named: "deleteIcon")
+        delete.backgroundColor = Theme.Operation
+        return UISwipeActionsConfiguration(actions: [delete])
     }
 }

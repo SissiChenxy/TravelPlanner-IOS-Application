@@ -23,7 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //TripFunctions.createTrip(title: "boston")
        // TripFunctions.createTrip(title: "washington")
         
-        //TripFunctions.deleteTrip(title: "boston")
+        //TripFunctions.deleteTrip(title: "bbb")
+        //TripFunctions.deleteTrip(title: "ccc")
     
         return true
     }

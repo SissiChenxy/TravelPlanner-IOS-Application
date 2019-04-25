@@ -99,6 +99,11 @@ class AddTripViewController: UIViewController{
             return
         }
         
+//        let imageData = imageView.image!.jpegData(compressionQuality: 1)
+//        let imageString = imageData!.base64EncodedString(options: NSData.Base64EncodingOptions())
+//        print("imageString is :::")
+//        print(imageString)
+        
         TripFunctions.createTrip(title: tripTextField.text!)
         if let doneSaving = doneSaving{
             doneSaving()

@@ -16,7 +16,6 @@
 		2364C2EC226C2FE600B31FBD /* TripFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2364C2EB226C2FE600B31FBD /* TripFunctions.swift */; };
 		2364C2F0226C342A00B31FBD /* TripsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2364C2EF226C342A00B31FBD /* TripsViewController.storyboard */; };
 		2364C2F2226C344900B31FBD /* TripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2364C2F1226C344900B31FBD /* TripsViewController.swift */; };
-		23BB5341226D8F4F00C43C9E /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BB5340226D8F4F00C43C9E /* Data.swift */; };
 		23BB5343226DA55D00C43C9E /* TripsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BB5342226DA55D00C43C9E /* TripsTableViewCell.swift */; };
 		23BB5346226FE0FA00C43C9E /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BB5345226FE0FA00C43C9E /* UIViewExtension.swift */; };
 		23BB5349226FE65700C43C9E /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BB5348226FE65700C43C9E /* Theme.swift */; };
@@ -43,7 +42,6 @@
 		2364C2EB226C2FE600B31FBD /* TripFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripFunctions.swift; sourceTree = "<group>"; };
 		2364C2EF226C342A00B31FBD /* TripsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TripsViewController.storyboard; sourceTree = "<group>"; };
 		2364C2F1226C344900B31FBD /* TripsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsViewController.swift; sourceTree = "<group>"; };
-		23BB5340226D8F4F00C43C9E /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		23BB5342226DA55D00C43C9E /* TripsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsTableViewCell.swift; sourceTree = "<group>"; };
 		23BB5345226FE0FA00C43C9E /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		23BB5348226FE65700C43C9E /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -106,7 +104,6 @@
 			isa = PBXGroup;
 			children = (
 				2364C2E8226C2FB700B31FBD /* Trip */,
-				23BB5340226D8F4F00C43C9E /* Data.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -266,7 +263,6 @@
 			files = (
 				23BB5349226FE65700C43C9E /* Theme.swift in Sources */,
 				23BB53532270323100C43C9E /* UIButtonExtension.swift in Sources */,
-				23BB5341226D8F4F00C43C9E /* Data.swift in Sources */,
 				2364C2DB226991E900B31FBD /* TravelPlanner.xcdatamodeld in Sources */,
 				2364C2EC226C2FE600B31FBD /* TripFunctions.swift in Sources */,
 				2364C2D5226991E900B31FBD /* ViewController.swift in Sources */,

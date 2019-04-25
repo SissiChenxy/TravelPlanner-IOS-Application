@@ -20,7 +20,29 @@ class TripFunctions{
         let trip = NSManagedObject.init(entity: tripEntity!, insertInto: managedContext)
     
         trip.setValue(title, forKey: "title")
-        //trip.setValue(id, forKey: "id")
+        
+        if managedContext.hasChanges {
+            do {
+                try managedContext.save()
+            } catch {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+        return trip as! Trip
+    }
+    
+    static func createTripWithImage(title:String,imageString:String) -> Trip{
+        let app = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = app.persistentContainer.viewContext
+        
+        let tripEntity = NSEntityDescription.entity(forEntityName: "Trip", in: managedContext)
+        let trip = NSManagedObject.init(entity: tripEntity!, insertInto: managedContext)
+        
+        trip.setValue(title, forKey: "title")
+        trip.setValue(imageString, forKey: "imageString")
         
         if managedContext.hasChanges {
             do {
@@ -59,7 +81,7 @@ class TripFunctions{
         }catch let error as NSError{
             print("Error :\(error.userInfo)")
         }
-        Data.trips = fetchedResultsController.fetchedObjects as! [Trip]
+        //Data.trips = fetchedResultsController.fetchedObjects as! [Trip]
         return fetchedResultsController as! NSFetchedResultsController<Trip>
     }
     
@@ -92,7 +114,6 @@ class TripFunctions{
             for objectDelete in test {
                 managedContext.delete(objectDelete as! NSManagedObject)
             }
-            //let objectDelete = test[0] as! NSManagedObject
             
             do{
                 try managedContext.save()
