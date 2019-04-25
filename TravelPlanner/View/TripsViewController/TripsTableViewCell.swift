@@ -19,7 +19,7 @@ class TripsTableViewCell: UITableViewCell {
         // Initialization code
         cardView.addShadowAndRoundedCorners();
         cardView.backgroundColor = Theme.Accent
-        label.font = UIFont(name: Theme.tripListFontName, size: 32)
+        label.font = UIFont(name: Theme.tripListFontName, size: 40)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

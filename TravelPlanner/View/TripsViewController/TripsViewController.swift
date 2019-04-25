@@ -13,7 +13,7 @@ class TripsViewController: UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addButton: UIButton!
-    
+    var index:Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,11 +34,13 @@ class TripsViewController: UIViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toAddTripSegue"{
             let popUp = segue.destination as! AddTripViewController
+            popUp.tripIndexToEdit = self.index
             popUp.doneSaving = { [weak self] in
                 //parse the whole view controller into other view controller
                 TripFunctions.readTrips()
                 self?.tableView.reloadData()
             }
+            index = nil
         }
     }
 }
@@ -73,6 +75,19 @@ extension TripsViewController : UITableViewDataSource, UITableViewDelegate{
         return 160
     }
     
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let edit = UIContextualAction(style: .destructive, title: "Edit"){(contextualAction, view, actionPerformed:@escaping (Bool) -> ()) in
+            self.index = indexPath.row
+            self.performSegue(withIdentifier: "toAddTripSegue", sender: nil)
+            actionPerformed(false)
+        }
+        edit.image = #imageLiteral(resourceName: "editIcon")
+        edit.backgroundColor = Theme.Edit
+        
+        return UISwipeActionsConfiguration(actions: [edit])
+    }
+    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
        
         let trip:Trip = TripFunctions.readTrips().object(at: indexPath)
@@ -83,7 +98,7 @@ extension TripsViewController : UITableViewDataSource, UITableViewDelegate{
             
             alert.addAction(UIAlertAction(title: "Delete", style:.default,handler: {
                 (alertAction) in
-                TripFunctions.deleteTrip(title: trip.title!)
+                TripFunctions.deleteTrip(trip: trip)
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 actionPerformed(true)
             }))
@@ -94,8 +109,8 @@ extension TripsViewController : UITableViewDataSource, UITableViewDelegate{
             }))
             self.present(alert, animated: true)
         }
-        delete.image = UIImage(named: "deleteIcon")
-        delete.backgroundColor = Theme.Operation
+        delete.image = #imageLiteral(resourceName: "deleteIcon")
+        delete.backgroundColor = Theme.Delete
         return UISwipeActionsConfiguration(actions: [delete])
     }
 }

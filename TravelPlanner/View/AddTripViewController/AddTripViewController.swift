@@ -64,6 +64,7 @@ class AddTripViewController: UIViewController{
     
     //identifier for other viewcontroller to find
     var doneSaving:(() -> ())?
+    var tripIndexToEdit:Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +78,13 @@ class AddTripViewController: UIViewController{
         titleLabel.layer.shadowColor = UIColor.white.cgColor
         titleLabel.layer.shadowOffset = CGSize.zero
         titleLabel.layer.shadowRadius = 5
+        
+        if let index = tripIndexToEdit {
+            let trip = TripFunctions.readTrips().fetchedObjects![index]
+            tripTextField.text = trip.title
+            titleLabel.text = "Edit Trip"
+            //imageView.image = UIImage(named: trip.imageString ?? "")
+        }
     }
     
     
@@ -88,10 +96,7 @@ class AddTripViewController: UIViewController{
         //call back function which need to be implemented in other controller
         
         guard tripTextField.text != "", let newTripName = tripTextField.text else{
-//            let imageView = UIImageView(frame: CGRect(x:0,y:0,width: 30,height: 30))
             errorImage.image = UIImage(named: "errorIcon")
-//            errorImage.contentMode = .scaleAspectFit
-//            tripTextField.rightViewMode = .always
             tripTextField.layer.borderColor = UIColor.red.cgColor
             tripTextField.layer.borderWidth = 1
             tripTextField.layer.cornerRadius = 5
@@ -103,8 +108,12 @@ class AddTripViewController: UIViewController{
 //        let imageString = imageData!.base64EncodedString(options: NSData.Base64EncodingOptions())
 //        print("imageString is :::")
 //        print(imageString)
+        if let index = tripIndexToEdit{
+            TripFunctions.updateTrip(trip: TripFunctions.readTrips().fetchedObjects![index],title: tripTextField.text!)
+        }else{
+            TripFunctions.createTrip(title: tripTextField.text!)
+        }
         
-        TripFunctions.createTrip(title: tripTextField.text!)
         if let doneSaving = doneSaving{
             doneSaving()
         }

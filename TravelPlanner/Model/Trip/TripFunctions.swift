@@ -19,6 +19,8 @@ class TripFunctions{
         let tripEntity = NSEntityDescription.entity(forEntityName: "Trip", in: managedContext)
         let trip = NSManagedObject.init(entity: tripEntity!, insertInto: managedContext)
     
+        let id = UUID()
+        trip.setValue(id, forKey: "id")
         trip.setValue(title, forKey: "title")
         
         if managedContext.hasChanges {
@@ -85,11 +87,11 @@ class TripFunctions{
         return fetchedResultsController as! NSFetchedResultsController<Trip>
     }
     
-    static func updateTrip(title:String){
+    static func updateTrip(trip:Trip,title:String){
         let app = UIApplication.shared.delegate as! AppDelegate
         let managedContext = app.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Trip")
-        fetchRequest.predicate = NSPredicate(format: "title = %@", title)
+        fetchRequest.predicate = NSPredicate(format: "id = %@", trip.id!.uuidString)
         do{
             let test = try managedContext.fetch(fetchRequest)
             let objectUpdate = test[0] as! NSManagedObject
@@ -104,11 +106,11 @@ class TripFunctions{
         }
     }
     
-    static func deleteTrip(title:String){
+    static func deleteTrip(trip:Trip){
         let app = UIApplication.shared.delegate as! AppDelegate
         let managedContext = app.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Trip")
-        fetchRequest.predicate = NSPredicate(format: "title = %@", title)
+        fetchRequest.predicate = NSPredicate(format: "id = %@", trip.id!.uuidString)
         do{
             let test = try managedContext.fetch(fetchRequest)
             for objectDelete in test {

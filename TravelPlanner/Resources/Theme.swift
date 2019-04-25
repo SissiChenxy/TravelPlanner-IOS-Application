@@ -14,6 +14,7 @@ class Theme {
     static let Accent = UIColor(named: "Accent")
     static let Background = UIColor(named: "Background")
     static let Tint = UIColor(named: "Tint")
-    static let Operation = UIColor(named: "Operation")
+    static let Delete = UIColor(named: "Delete")
+    static let Edit = UIColor(named: "Edit")
     static let LabelColor = UIColor(named: "Label")
 }
