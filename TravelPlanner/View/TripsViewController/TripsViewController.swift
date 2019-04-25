@@ -11,9 +11,9 @@ import UIKit
 
 class TripsViewController: UIViewController{
     
-    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +59,7 @@ extension TripsViewController : UITableViewDataSource, UITableViewDelegate{
 //            }
         
         cell.setup(trip: Data.trips[indexPath.row])
-        //cell.textLabel?.text = Data.trips[indexPath.row].title
+        cell.textLabel?.text = Data.trips[indexPath.row].title
         
         return cell
     }

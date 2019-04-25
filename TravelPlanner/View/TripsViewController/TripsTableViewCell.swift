@@ -10,9 +10,11 @@ import UIKit
 
 class TripsTableViewCell: UITableViewCell {
 
-    
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var label: UILabel!
+  
+    @IBOutlet weak var tripImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -29,6 +31,8 @@ class TripsTableViewCell: UITableViewCell {
     
     func setup(trip:Trip){
         label.text = trip.title
+        //tripImageView.image =
+
     }
 
 }

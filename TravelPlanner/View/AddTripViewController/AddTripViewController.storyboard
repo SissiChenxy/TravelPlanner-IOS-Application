@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,12 +23,17 @@
                                 <rect key="frame" x="16" y="88" width="343" height="156"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hb8-TH-8vX">
+                                        <rect key="frame" x="8" y="8" width="327" height="140"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Trip" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VbO-zj-Ydf">
-                                        <rect key="frame" x="107" y="22" width="126" height="29"/>
+                                        <rect key="frame" x="19" y="20" width="126" height="29"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
+                                        <size key="shadowOffset" width="1" height="1"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Trip Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fcO-Rb-1pp">
                                         <rect key="frame" x="35" y="62" width="276" height="30"/>
@@ -37,25 +43,34 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DKf-co-Kis" customClass="AppButton" customModule="TravelPlanner" customModuleProvider="target">
-                                        <rect key="frame" x="210" y="114" width="70" height="30"/>
+                                        <rect key="frame" x="210" y="108" width="70" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                         <state key="normal" title="Save"/>
                                         <connections>
                                             <action selector="save:" destination="buf-Kh-3sV" eventType="touchUpInside" id="t29-bs-hcY"/>
                                         </connections>
                                     </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e3P-de-SPd">
+                                        <rect key="frame" x="271" y="62" width="31" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bzk-bv-cvA">
+                                        <rect key="frame" x="294" y="20" width="29" height="27"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" name="Tint"/>
+                                        <state key="normal" image="cameraIcon"/>
+                                        <connections>
+                                            <action selector="addImage:" destination="buf-Kh-3sV" eventType="touchUpInside" id="I3K-Jn-liD"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kTU-dC-PjY" customClass="AppButton" customModule="TravelPlanner" customModuleProvider="target">
-                                        <rect key="frame" x="79" y="114" width="70" height="30"/>
+                                        <rect key="frame" x="79" y="108" width="70" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <state key="normal" title="Cancel"/>
                                         <connections>
                                             <action selector="cancel:" destination="buf-Kh-3sV" eventType="touchUpInside" id="rMa-Sw-EO5"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e3P-de-SPd">
-                                        <rect key="frame" x="272" y="62" width="30" height="28"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -64,8 +79,10 @@
                         <viewLayoutGuide key="safeArea" id="849-dI-3KL"/>
                     </view>
                     <connections>
+                        <outlet property="cameraButton" destination="bzk-bv-cvA" id="sgr-6i-Azg"/>
                         <outlet property="cancelButton" destination="kTU-dC-PjY" id="j4T-tU-OG8"/>
                         <outlet property="errorImage" destination="e3P-de-SPd" id="JZp-Eb-qwn"/>
+                        <outlet property="imageView" destination="hb8-TH-8vX" id="n7m-iG-7xv"/>
                         <outlet property="saveButton" destination="DKf-co-Kis" id="IpT-gL-b9r"/>
                         <outlet property="titleLabel" destination="VbO-zj-Ydf" id="eIx-Ns-CGm"/>
                         <outlet property="tripTextField" destination="fcO-Rb-1pp" id="aW0-2U-Tuk"/>
@@ -76,4 +93,10 @@
             <point key="canvasLocation" x="757.60000000000002" y="-51.724137931034484"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cameraIcon" width="50" height="50"/>
+        <namedColor name="Tint">
+            <color red="1" green="0.4392156862745098" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
