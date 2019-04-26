@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,19 +22,22 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OXn-LT-af6">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" name="Tint"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PPb-eJ-zPh">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PPb-eJ-zPh">
                                 <rect key="frame" x="0.0" y="91" width="375" height="576"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="576" id="CVz-Le-ack"/>
                                 </constraints>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="headerCell" rowHeight="44" id="Z4V-Af-bsl" customClass="HeaderTableViewCell" customModule="TravelPlanner" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z4V-Af-bsl" id="BuX-jp-kKN">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DB5-Qd-3WN">
@@ -54,6 +58,8 @@
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="tintColor" name="Tint"/>
                                             <constraints>
                                                 <constraint firstItem="DB5-Qd-3WN" firstAttribute="top" secondItem="BuX-jp-kKN" secondAttribute="topMargin" id="TK7-ep-CeG"/>
                                                 <constraint firstItem="DB5-Qd-3WN" firstAttribute="leading" secondItem="BuX-jp-kKN" secondAttribute="leadingMargin" id="eda-lZ-GnQ"/>
@@ -67,12 +73,73 @@
                                             <outlet property="titleLabel" destination="ehe-dZ-PSf" id="PTx-x6-Jep"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="activityCell" rowHeight="101" id="tw4-Ey-62c" customClass="ActivityTableViewCell" customModule="TravelPlanner" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="101"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tw4-Ey-62c" id="dLC-qB-j9m">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="101"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sUV-85-kHX">
+                                                    <rect key="frame" x="15" y="11" width="345" height="79"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="diK-oV-BBM">
+                                                            <rect key="frame" x="111" y="8" width="42" height="63"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yk1-Gx-xNu">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="42" height="27.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gnZ-6v-QU1">
+                                                                    <rect key="frame" x="0.0" y="35.5" width="42" height="27.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wg9-Qp-Trw">
+                                                            <rect key="frame" x="20" y="4" width="71" height="71"/>
+                                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="Wg9-Qp-Trw" secondAttribute="height" multiplier="1:1" id="BnW-0D-pHe"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" name="Accent"/>
+                                                    <constraints>
+                                                        <constraint firstItem="diK-oV-BBM" firstAttribute="top" secondItem="sUV-85-kHX" secondAttribute="top" constant="8" id="3Dq-9p-I8m"/>
+                                                        <constraint firstItem="Wg9-Qp-Trw" firstAttribute="top" secondItem="sUV-85-kHX" secondAttribute="top" constant="4" id="5Xu-xx-aAj"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Wg9-Qp-Trw" secondAttribute="bottom" constant="4" id="DQW-3y-Gvb"/>
+                                                        <constraint firstAttribute="height" constant="79" id="Fla-Rt-ivT"/>
+                                                        <constraint firstAttribute="trailing" secondItem="diK-oV-BBM" secondAttribute="trailing" constant="8" id="a6V-oo-hAF"/>
+                                                        <constraint firstItem="Wg9-Qp-Trw" firstAttribute="leading" secondItem="sUV-85-kHX" secondAttribute="leading" constant="20" id="c0O-4t-M1m"/>
+                                                        <constraint firstAttribute="bottom" secondItem="diK-oV-BBM" secondAttribute="bottom" constant="8" id="jYm-5q-avb"/>
+                                                        <constraint firstItem="diK-oV-BBM" firstAttribute="leading" secondItem="Wg9-Qp-Trw" secondAttribute="trailing" constant="20" id="qxZ-X4-BRF"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="tintColor" name="Tint"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="activityImageView" destination="Wg9-Qp-Trw" id="YDD-B7-0el"/>
+                                            <outlet property="cardView" destination="sUV-85-kHX" id="j5Y-qR-Ecd"/>
+                                            <outlet property="subtitleLabel" destination="gnZ-6v-QU1" id="h3u-zF-1OW"/>
+                                            <outlet property="titleLabel" destination="Yk1-Gx-xNu" id="R7D-X5-wzj"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pDa-Vb-OJv">
-                                <rect key="frame" x="306" y="599" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n5t-Oq-TIl" customClass="AppButton" customModule="TravelPlanner" customModuleProvider="target">
+                                <rect key="frame" x="305" y="598" width="50" height="50"/>
                                 <state key="normal" image="plusIcon"/>
+                                <connections>
+                                    <action selector="addAction:" destination="akx-BD-8iW" eventType="touchUpInside" id="C9R-DK-iK2"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -81,6 +148,8 @@
                             <constraint firstItem="OXn-LT-af6" firstAttribute="top" secondItem="YdP-Ab-Hsn" secondAttribute="top" id="DV1-oT-GEN"/>
                             <constraint firstItem="PPb-eJ-zPh" firstAttribute="leading" secondItem="JAc-Vq-cz1" secondAttribute="leading" id="IsH-LU-AZ5"/>
                             <constraint firstItem="PPb-eJ-zPh" firstAttribute="bottom" secondItem="YdP-Ab-Hsn" secondAttribute="bottom" id="OT9-BO-jpp"/>
+                            <constraint firstItem="JAc-Vq-cz1" firstAttribute="trailing" secondItem="n5t-Oq-TIl" secondAttribute="trailing" constant="20" id="UjA-wY-Dwk"/>
+                            <constraint firstItem="JAc-Vq-cz1" firstAttribute="bottom" secondItem="n5t-Oq-TIl" secondAttribute="bottom" constant="19" id="VcS-MR-DiK"/>
                             <constraint firstItem="PPb-eJ-zPh" firstAttribute="trailing" secondItem="JAc-Vq-cz1" secondAttribute="trailing" id="fMS-Bn-0R2"/>
                             <constraint firstItem="OXn-LT-af6" firstAttribute="leading" secondItem="YdP-Ab-Hsn" secondAttribute="leading" id="kpT-Ie-2L4"/>
                             <constraint firstItem="OXn-LT-af6" firstAttribute="trailing" secondItem="YdP-Ab-Hsn" secondAttribute="trailing" id="nsz-W5-dHR"/>
@@ -88,6 +157,7 @@
                         <viewLayoutGuide key="safeArea" id="JAc-Vq-cz1"/>
                     </view>
                     <connections>
+                        <outlet property="addButton" destination="n5t-Oq-TIl" id="Blb-UF-eqX"/>
                         <outlet property="backgroundImageView" destination="OXn-LT-af6" id="bxL-qu-rdT"/>
                         <outlet property="tableView" destination="PPb-eJ-zPh" id="53a-6K-raU"/>
                     </connections>
@@ -99,5 +169,11 @@
     </scenes>
     <resources>
         <image name="plusIcon" width="50" height="50"/>
+        <namedColor name="Accent">
+            <color red="0.74901960784313726" green="0.34901960784313724" blue="0.40392156862745099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Tint">
+            <color red="1" green="0.4392156862745098" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

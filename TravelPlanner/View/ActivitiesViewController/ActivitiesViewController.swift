@@ -17,10 +17,9 @@ class ActivitiesViewController: UIViewController {
     
     @IBOutlet weak var backgroundImageView:UIImageView!
     @IBOutlet weak var tableView: UITableView!
-    @IBAction func backToTrips(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-    }
     
+    
+    @IBOutlet weak var addButton: AppButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         print("detail controller inside: ")
@@ -28,6 +27,7 @@ class ActivitiesViewController: UIViewController {
         tableView.dataSource = self as! UITableViewDataSource
         tableView.delegate = self
         title = tripTitle
+        addButton.createFloatingFunctionButton()
         
         TripFunctions.getTripInfo(id: tripId){ [weak self] (model) in
             
@@ -56,6 +56,23 @@ class ActivitiesViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    @IBAction func addAction(_ sender: AppButton) {
+        let alert = UIAlertController(title: "Which one would you like to add?", message: nil, preferredStyle: .actionSheet)
+        let dayAction = UIAlertAction(title: "Day", style: .default,handler: handleAddDay)
+        let activityAction = UIAlertAction(title: "Activity", style: .default){
+            (action) in print("Add new activity")
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alert.addAction(dayAction)
+        alert.addAction(activityAction)
+        alert.addAction(cancelAction)
+        //alert.view.tintColor = Theme.Tint
+        present(alert, animated: true)
+    }
+    
+    func handleAddDay(action:UIAlertAction){
+        print("Add new day")
+    }
 
 }
 
@@ -91,10 +108,10 @@ extension ActivitiesViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let activityCell = tableView.dequeueReusableCell(withIdentifier: "activityCell")!
+        let activityCell = tableView.dequeueReusableCell(withIdentifier: "activityCell")! as! ActivityTableViewCell
         let day = trip?.days?.allObjects[indexPath.row] as! Day
         let activity = day.activities?.allObjects[indexPath.row] as! Activity
-        activityCell.textLabel!.text = activity.title
+        activityCell.setup(model: activity)
         return activityCell
     }
     

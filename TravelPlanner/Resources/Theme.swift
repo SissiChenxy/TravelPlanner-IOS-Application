@@ -12,7 +12,8 @@ class Theme {
     static let popUpLabelFontName = "Calypsoka"
     static let buttonFontName = "Stardust Adventure"
     static let bodyFontName = "Blueline Paradise"
-    static let bodyBoldFontName = "Avenir Next-Bold"
+    static let activityBoldFontName = "Avenir Next-Bold"
+    static let activityFontName = "Avenir Next"
     static let Accent = UIColor(named: "Accent")
     static let Background = UIColor(named: "Background")
     static let Tint = UIColor(named: "Tint")

@@ -33,6 +33,7 @@
 		23BB536F2272571F00C43C9E /* DayFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BB536E2272571E00C43C9E /* DayFunctions.swift */; };
 		23BB537322726BA100C43C9E /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BB537222726BA100C43C9E /* HeaderTableViewCell.swift */; };
 		23BB53752272C80900C43C9E /* BluelineParadise.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23BB53742272C80800C43C9E /* BluelineParadise.ttf */; };
+		23BB53772272CD1C00C43C9E /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BB53762272CD1C00C43C9E /* ActivityTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		23BB536E2272571E00C43C9E /* DayFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayFunctions.swift; sourceTree = "<group>"; };
 		23BB537222726BA100C43C9E /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
 		23BB53742272C80800C43C9E /* BluelineParadise.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BluelineParadise.ttf; sourceTree = "<group>"; };
+		23BB53762272CD1C00C43C9E /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +205,7 @@
 				23BB53662271901000C43C9E /* ActivitiesViewController.storyboard */,
 				23BB5368227191B400C43C9E /* ActivitiesViewController.swift */,
 				23BB537222726BA100C43C9E /* HeaderTableViewCell.swift */,
+				23BB53762272CD1C00C43C9E /* ActivityTableViewCell.swift */,
 			);
 			path = ActivitiesViewController;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				23BB53532270323100C43C9E /* UIButtonExtension.swift in Sources */,
 				2364C2DB226991E900B31FBD /* TravelPlanner.xcdatamodeld in Sources */,
 				2364C2EC226C2FE600B31FBD /* TripFunctions.swift in Sources */,
+				23BB53772272CD1C00C43C9E /* ActivityTableViewCell.swift in Sources */,
 				23BB5369227191B500C43C9E /* ActivitiesViewController.swift in Sources */,
 				2364C2D5226991E900B31FBD /* ViewController.swift in Sources */,
 				2364C2F2226C344900B31FBD /* TripsViewController.swift in Sources */,
