@@ -29,10 +29,12 @@ class TripsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setup(trip:Trip){
+    func setup(trip:TripModel){
         label.text = trip.title
+        print("whether is image&&&&")
+        print(trip.image)
         if let image = trip.image{
-            tripImageView.image = UIImage(data: image)
+            tripImageView.image = image
         }
     }
 

@@ -11,7 +11,7 @@ import UIKit
 class ActivitiesViewController: UIViewController {
 
     var tripId:UUID!
-    var trip : Trip?
+    var trip : TripModel?
     var tripTitle:String = ""
     var sectionHeaderHeight: CGFloat = 0.0
     
@@ -20,100 +20,109 @@ class ActivitiesViewController: UIViewController {
     
     
     @IBOutlet weak var addButton: AppButton!
+    
+    fileprivate func updateTableViewWithTripData() {
+
+        return TripFunctions.getTripInfo(id: tripId){ [weak self] (model) in
+            guard let self = self else {return}
+            self.trip = model
+
+            guard let model = model else {return}
+            self.backgroundImageView.image = model.image
+
+            self.tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("detail controller inside: ")
-        print(self.tripId)
         tableView.dataSource = self as! UITableViewDataSource
         tableView.delegate = self
         title = tripTitle
         addButton.createFloatingFunctionButton()
+        view.backgroundColor = Theme.Background
+        updateTableViewWithTripData()
         
-        TripFunctions.getTripInfo(id: tripId){ [weak self] (model) in
-            
-            guard let self = self else {return}
-            self.trip = model
-            
-            guard let model = model else {return}
-            
-            guard let image = model.image, image != nil else{return}
-            self.backgroundImageView.image = UIImage(data:image)
-            
-            self.tableView.reloadData()
-        }
-
         // Do any additional setup after loading the view.
         sectionHeaderHeight = tableView.dequeueReusableCell(withIdentifier: "headerCell")?.contentView.bounds.height ?? 0
         
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     @IBAction func addAction(_ sender: AppButton) {
         let alert = UIAlertController(title: "Which one would you like to add?", message: nil, preferredStyle: .actionSheet)
         let dayAction = UIAlertAction(title: "Day", style: .default,handler: handleAddDay)
-        let activityAction = UIAlertAction(title: "Activity", style: .default){
-            (action) in print("Add new activity")
-        }
+        let activityAction = UIAlertAction(title: "Activity", style: .default,handler: handleAddActivity)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alert.addAction(dayAction)
         alert.addAction(activityAction)
         alert.addAction(cancelAction)
-        //alert.view.tintColor = Theme.Tint
+        alert.view.tintColor = Theme.Tint
         present(alert, animated: true)
     }
     
     func handleAddDay(action:UIAlertAction){
-        print("Add new day")
+        let vc = AddDayViewController.getInstance() as! AddDayViewController
+        vc.tripIndex = Data.tripList.firstIndex(where: { (tripModel) -> Bool in
+            tripModel.id == tripId
+        })
+        vc.doneSaving = { [weak self] in
+            guard let self = self else {return}
+            self.updateTableViewWithTripData()
+        }
+        present(vc,animated: true)
+    }
+
+    func handleAddActivity(action:UIAlertAction){
+//        let vc = AddActivityViewController.getInstance() as! AddActivityViewController
+//        vc.tripIndex = Data.tripList.firstIndex(where: { (tripModel) -> Bool in
+//            tripModel.id == tripId
+//        })
+//        present(vc,animated: true)
     }
 
 }
 
 extension ActivitiesViewController: UITableViewDataSource, UITableViewDelegate{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return trip?.days?.count ?? 0
+        return trip?.dayList.count ?? 0
     }
-    
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        let day = trip?.days!.allObjects[section] as! Day
+
+
+        let day = trip?.dayList[section] as! DayModel
+        print("day.title")
+        print(day.title)
         let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderTableViewCell
-        cell.setup(model: day)
+                cell.setup(model: day)
         return cell.contentView
     }
-    
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return sectionHeaderHeight
     }
-    
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        let day = trip?.days!.allObjects[section] as! Day
-//        let title = day.title ?? ""
-//        let subtitle = day.subtitle ?? ""
-//        return "\(title) - \(subtitle)"
-//    }
-    
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let day = trip?.days!.allObjects[section] as! Day
-        let activities = day.activities?.count
-        return activities! ?? 0
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let day = trip?.dayList[section] as! DayModel
+        let title = day.title ?? ""
+        let subtitle = day.subtitle ?? ""
+        return "\(title) - \(subtitle)"
     }
-    
+
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let day = trip?.dayList[section] as! DayModel
+        let activities = day.activityList.count
+        return activities ?? 0
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let activityCell = tableView.dequeueReusableCell(withIdentifier: "activityCell")! as! ActivityTableViewCell
-        let day = trip?.days?.allObjects[indexPath.row] as! Day
-        let activity = day.activities?.allObjects[indexPath.row] as! Activity
+        let day = trip?.dayList[indexPath.section] as! DayModel
+        let activity = day.activityList[indexPath.row] as! ActivityModel
         activityCell.setup(model: activity)
         return activityCell
     }
-    
-    
+
+
 }

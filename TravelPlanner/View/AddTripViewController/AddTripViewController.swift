@@ -84,7 +84,7 @@ class AddTripViewController: UIViewController{
             tripTextField.text = trip.title
             titleLabel.text = "Edit Trip"
             if let image = trip.image{
-                imageView.image = UIImage(data: image)
+                imageView.image = image
             }
         }
     }
@@ -112,6 +112,8 @@ class AddTripViewController: UIViewController{
             }
             TripFunctions.updateTrip(trip: TripFunctions.readTrips()[index],title: tripTextField.text!)
         }else{
+            print("imageView.image")
+            print(imageView.image)
             if let image = imageView.image{
                 TripFunctions.createTripWithImage(title: tripTextField.text!,image: image)
             }else{

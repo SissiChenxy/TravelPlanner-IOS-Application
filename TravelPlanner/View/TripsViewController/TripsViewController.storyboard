@@ -61,7 +61,6 @@
                                             <outlet property="cardView" destination="VqU-QN-1As" id="yjn-7q-ZKS"/>
                                             <outlet property="label" destination="mNP-3z-vm1" id="O3D-8p-wa8"/>
                                             <outlet property="tripImageView" destination="gY5-yI-izh" id="Cml-Qf-Gk3"/>
-                                            <segue destination="sZ9-P2-FXU" kind="show" identifier="showActivitiesSegue" id="FGd-bh-FHV"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -88,14 +87,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LEb-Ba-b5G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1932" y="-50.824587706146929"/>
-        </scene>
-        <!--ActivitiesViewController-->
-        <scene sceneID="b8Y-S3-W61">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DjL-Qd-Yam" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewControllerPlaceholder storyboardName="ActivitiesViewController" id="sZ9-P2-FXU" sceneMemberID="viewController"/>
-            </objects>
-            <point key="canvasLocation" x="2656.8000000000002" y="-130.43478260869566"/>
         </scene>
         <!--AddTripViewController-->
         <scene sceneID="9PW-9c-sZ0">

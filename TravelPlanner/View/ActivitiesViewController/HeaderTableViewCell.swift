@@ -19,7 +19,7 @@ class HeaderTableViewCell: UITableViewCell {
         subtitleLabel.font = UIFont(name: Theme.activityFontName, size: 17)
     }
 
-    func setup(model:Day){
+    func setup(model:DayModel){
         titleLabel.text = model.title ?? "title here"
         subtitleLabel.text = model.subtitle ?? "subtitle here"
     }

@@ -23,23 +23,23 @@ class ActivityTableViewCell: UITableViewCell {
         subtitleLabel.font = UIFont(name: Theme.activityFontName, size: 20)
     }
 
-    func setup(model:Activity){
+    func setup(model:ActivityModel){
         titleLabel.text = model.title
         subtitleLabel.text = model.subtitle
-        activityImageView.image = getActivityImageView(type:model.type!)
+        activityImageView.image = getActivityImageView(type:model.activityType)
     }
     
-    func getActivityImageView(type:String) -> UIImage{
+    func getActivityImageView(type:ActivityType) -> UIImage{
         switch type {
-        case "food":
+        case .Food:
            return #imageLiteral(resourceName: "foodIcon")
-        case "hotel":
+        case .Hotel:
            return #imageLiteral(resourceName: "hotelIcon")
-        case "flight":
+        case .Flight:
            return #imageLiteral(resourceName: "flightIcon")
-        case "tour":
+        case .Tour:
            return #imageLiteral(resourceName: "tourIcon")
-        case "car":
+        case .Car:
            return #imageLiteral(resourceName: "carIcon")
         default:
             return #imageLiteral(resourceName: "editIcon")

@@ -7,14 +7,22 @@
 //
 
 import Foundation
+import UIKit
 
 class TripModel{
     //required field
     let id: UUID
-    var title: String
+    var title: String = ""
+    var image:UIImage?
+    var dayList = [DayModel]()
     
-    init(title:String) {
+    init(title:String,image: UIImage? = nil,dayModels: [DayModel]? = nil) {
         self.id = UUID()
         self.title = title
+        //self.image = image
+        
+        if let dayModels = dayModels{
+            self.dayList = dayModels
+        }
     }
 }

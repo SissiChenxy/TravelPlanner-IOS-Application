@@ -29,10 +29,6 @@ class TripsViewController: UIViewController{
     
     override func viewDidAppear(_ animated: Bool) {
         let trips = TripFunctions.readTrips()
-//        print("come back to navigation controller *****: ")
-        print(trips[0].id)
-        print(trips[0].title)
-        print(trips[0].image)
         self.tableView.reloadData()
     }
     
@@ -47,13 +43,6 @@ class TripsViewController: UIViewController{
             }
             index = nil
         }
-        else if segue.identifier == "showActivitiesSegue"{
-            let activitiesController = segue.destination as! ActivitiesViewController
-            let index = tableView.indexPathForSelectedRow!
-            let trip = TripFunctions.readTrips()[index.row] as! Trip
-            activitiesController.tripId = trip.id
-            activitiesController.tripTitle = trip.title!
-        }
     }
 }
 
@@ -62,7 +51,7 @@ class TripsViewController: UIViewController{
 extension TripsViewController : UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let trips:[Trip] = TripFunctions.readTrips() else {return 0}
+        guard let trips:[TripModel] = TripFunctions.readTrips() else {return 0}
         return trips.count
     }
     
@@ -102,15 +91,15 @@ extension TripsViewController : UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
        
-        let trip:Trip = TripFunctions.readTrips()[indexPath.row]
+        let trip:TripModel = TripFunctions.readTrips()[indexPath.row]
         
         let delete = UIContextualAction(style: .destructive, title: "Delete"){(contextualAction, view, actionPerformed:@escaping (Bool) -> ()) in
             
-            let alert = UIAlertController(title: "Delete Trip", message: "Are you sure you want to delete this trip: \(trip.title!)?", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Delete Trip", message: "Are you sure you want to delete this trip: \(trip.title)?", preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "Delete", style:.default,handler: {
                 (alertAction) in
-                TripFunctions.deleteTrip(trip: trip)
+                TripFunctions.deleteTrip(index: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 actionPerformed(true)
             }))
@@ -126,16 +115,17 @@ extension TripsViewController : UITableViewDataSource, UITableViewDelegate{
         return UISwipeActionsConfiguration(actions: [delete])
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let storyboard = UIStoryboard(name: String(describing: ActivitiesViewController.self), bundle: nil)
-//        let vc = storyboard.instantiateInitialViewController() as! ActivitiesViewController
-//        let trip = TripFunctions.readTrips()[indexPath.row]
-//        vc.tripId = trip.id!
-//        print("trip.id is ::::")
-//        print(trip.id)
-//        print("vc.tripId is ::::")
-//        print(vc.tripId)
-//        navigationController?.pushViewController(vc,animated: true)
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: String(describing: ActivitiesViewController.self), bundle: nil)
+        let vc = storyboard.instantiateInitialViewController() as! ActivitiesViewController
+        let trip = TripFunctions.readTrips()[indexPath.row] as! TripModel
+        vc.tripId = trip.id
+        vc.tripTitle = trip.title
+        print("trip.id is ::::")
+        print(trip.id)
+        print("vc.tripId is ::::")
+        print(vc.tripId)
+        navigationController?.pushViewController(vc,animated: true)
+    }
 
 }

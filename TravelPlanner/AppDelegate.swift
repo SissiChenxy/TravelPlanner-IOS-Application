@@ -20,20 +20,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navBarAppearenceProxy = UINavigationBar.appearance()
         navBarAppearenceProxy.barTintColor = Theme.Accent
         
-        let font = UIFont(name:Theme.bodyFontName,size:50)
+        let font = UIFont(name:Theme.bodyFontName,size:35)
         navBarAppearenceProxy.titleTextAttributes = [NSAttributedString.Key.font:font,NSAttributedString.Key.foregroundColor:UIColor.white]
         
-        let app = UIApplication.shared.delegate as! AppDelegate
-        let managedContext = app.persistentContainer.viewContext
+        MockData.createMockData()
+        
         //TripFunctions.createTrip(title: "boston")
        // TripFunctions.createTrip(title: "washington")
         
         //TripFunctions.deleteTrip(title: "bbb")
         //TripFunctions.deleteTrip(title: "ccc")
-        
-        DayFunctions.createDay(title:"April 23th",subtitle:"Departure")
-        DayFunctions.createDay(title:"May 13th",subtitle:"Hotel")
-    
+            
         return true
     }
 
