@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="akx-BD-8iW">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Activities View Controller-->
+        <scene sceneID="Zu4-JK-AOn">
+            <objects>
+                <viewController id="akx-BD-8iW" customClass="ActivitiesViewController" customModule="TravelPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YdP-Ab-Hsn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OXn-LT-af6">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PPb-eJ-zPh">
+                                <rect key="frame" x="0.0" y="91" width="375" height="576"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="576" id="CVz-Le-ack"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="headerCell" rowHeight="44" id="Z4V-Af-bsl" customClass="HeaderTableViewCell" customModule="TravelPlanner" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z4V-Af-bsl" id="BuX-jp-kKN">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DB5-Qd-3WN">
+                                                    <rect key="frame" x="15" y="11" width="345" height="22"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehe-dZ-PSf">
+                                                            <rect key="frame" x="0.0" y="0.0" width="168.5" height="22"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ri-WP-SNJ">
+                                                            <rect key="frame" x="176.5" y="0.0" width="168.5" height="22"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="DB5-Qd-3WN" firstAttribute="top" secondItem="BuX-jp-kKN" secondAttribute="topMargin" id="TK7-ep-CeG"/>
+                                                <constraint firstItem="DB5-Qd-3WN" firstAttribute="leading" secondItem="BuX-jp-kKN" secondAttribute="leadingMargin" id="eda-lZ-GnQ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="DB5-Qd-3WN" secondAttribute="trailing" id="mX8-07-7ZL"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="DB5-Qd-3WN" secondAttribute="bottom" id="xOE-rM-J4T"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="subtitleLabel" destination="0Ri-WP-SNJ" id="zci-QM-Dey"/>
+                                            <outlet property="titleLabel" destination="ehe-dZ-PSf" id="PTx-x6-Jep"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pDa-Vb-OJv">
+                                <rect key="frame" x="306" y="599" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                <state key="normal" image="plusIcon"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="OXn-LT-af6" firstAttribute="bottom" secondItem="JAc-Vq-cz1" secondAttribute="bottom" id="3Y6-S0-KS9"/>
+                            <constraint firstItem="OXn-LT-af6" firstAttribute="top" secondItem="YdP-Ab-Hsn" secondAttribute="top" id="DV1-oT-GEN"/>
+                            <constraint firstItem="PPb-eJ-zPh" firstAttribute="leading" secondItem="JAc-Vq-cz1" secondAttribute="leading" id="IsH-LU-AZ5"/>
+                            <constraint firstItem="PPb-eJ-zPh" firstAttribute="bottom" secondItem="YdP-Ab-Hsn" secondAttribute="bottom" id="OT9-BO-jpp"/>
+                            <constraint firstItem="PPb-eJ-zPh" firstAttribute="trailing" secondItem="JAc-Vq-cz1" secondAttribute="trailing" id="fMS-Bn-0R2"/>
+                            <constraint firstItem="OXn-LT-af6" firstAttribute="leading" secondItem="YdP-Ab-Hsn" secondAttribute="leading" id="kpT-Ie-2L4"/>
+                            <constraint firstItem="OXn-LT-af6" firstAttribute="trailing" secondItem="YdP-Ab-Hsn" secondAttribute="trailing" id="nsz-W5-dHR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="JAc-Vq-cz1"/>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="OXn-LT-af6" id="bxL-qu-rdT"/>
+                        <outlet property="tableView" destination="PPb-eJ-zPh" id="53a-6K-raU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="moM-Pv-qpC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="68" y="-7.6461769115442282"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="plusIcon" width="50" height="50"/>
+    </resources>
+</document>

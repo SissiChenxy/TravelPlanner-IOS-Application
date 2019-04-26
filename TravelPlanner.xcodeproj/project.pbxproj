@@ -28,6 +28,11 @@
 		23BB535D2270406500C43C9E /* PopUpUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BB535C2270406500C43C9E /* PopUpUIView.swift */; };
 		23BB53622270435500C43C9E /* Calypsoka.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23BB53602270424600C43C9E /* Calypsoka.ttf */; };
 		23BB53642270440800C43C9E /* AppButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BB53632270440800C43C9E /* AppButton.swift */; };
+		23BB53672271901000C43C9E /* ActivitiesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23BB53662271901000C43C9E /* ActivitiesViewController.storyboard */; };
+		23BB5369227191B500C43C9E /* ActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BB5368227191B400C43C9E /* ActivitiesViewController.swift */; };
+		23BB536F2272571F00C43C9E /* DayFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BB536E2272571E00C43C9E /* DayFunctions.swift */; };
+		23BB537322726BA100C43C9E /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BB537222726BA100C43C9E /* HeaderTableViewCell.swift */; };
+		23BB53752272C80900C43C9E /* BluelineParadise.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23BB53742272C80800C43C9E /* BluelineParadise.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +59,11 @@
 		23BB535C2270406500C43C9E /* PopUpUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpUIView.swift; sourceTree = "<group>"; };
 		23BB53602270424600C43C9E /* Calypsoka.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Calypsoka.ttf; sourceTree = "<group>"; };
 		23BB53632270440800C43C9E /* AppButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppButton.swift; sourceTree = "<group>"; };
+		23BB53662271901000C43C9E /* ActivitiesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ActivitiesViewController.storyboard; sourceTree = "<group>"; };
+		23BB5368227191B400C43C9E /* ActivitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesViewController.swift; sourceTree = "<group>"; };
+		23BB536E2272571E00C43C9E /* DayFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayFunctions.swift; sourceTree = "<group>"; };
+		23BB537222726BA100C43C9E /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
+		23BB53742272C80800C43C9E /* BluelineParadise.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BluelineParadise.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +113,7 @@
 		2364C2E7226C2F9300B31FBD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				23BB536D2272570B00C43C9E /* Day */,
 				2364C2E8226C2FB700B31FBD /* Trip */,
 			);
 			path = Model;
@@ -119,6 +130,7 @@
 		2364C2ED226C33F600B31FBD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				23BB536522718FE900C43C9E /* ActivitiesViewController */,
 				23BB5356227039BA00C43C9E /* AddTripViewController */,
 				2364C2EE226C340500B31FBD /* TripsViewController */,
 			);
@@ -179,9 +191,28 @@
 			children = (
 				23BB534C226FEA0200C43C9E /* StardustAdventure.ttf */,
 				23BB53602270424600C43C9E /* Calypsoka.ttf */,
+				23BB53742272C80800C43C9E /* BluelineParadise.ttf */,
 				23BB534A226FE83C00C43C9E /* ConeriaScript.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		23BB536522718FE900C43C9E /* ActivitiesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				23BB53662271901000C43C9E /* ActivitiesViewController.storyboard */,
+				23BB5368227191B400C43C9E /* ActivitiesViewController.swift */,
+				23BB537222726BA100C43C9E /* HeaderTableViewCell.swift */,
+			);
+			path = ActivitiesViewController;
+			sourceTree = "<group>";
+		};
+		23BB536D2272570B00C43C9E /* Day */ = {
+			isa = PBXGroup;
+			children = (
+				23BB536E2272571E00C43C9E /* DayFunctions.swift */,
+			);
+			path = Day;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,6 +273,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23BB53672271901000C43C9E /* ActivitiesViewController.storyboard in Resources */,
+				23BB53752272C80900C43C9E /* BluelineParadise.ttf in Resources */,
 				2364C2E0226991ED00B31FBD /* LaunchScreen.storyboard in Resources */,
 				2364C2DD226991ED00B31FBD /* Assets.xcassets in Resources */,
 				23BB53622270435500C43C9E /* Calypsoka.ttf in Resources */,
@@ -261,10 +294,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23BB536F2272571F00C43C9E /* DayFunctions.swift in Sources */,
+				23BB537322726BA100C43C9E /* HeaderTableViewCell.swift in Sources */,
 				23BB5349226FE65700C43C9E /* Theme.swift in Sources */,
 				23BB53532270323100C43C9E /* UIButtonExtension.swift in Sources */,
 				2364C2DB226991E900B31FBD /* TravelPlanner.xcdatamodeld in Sources */,
 				2364C2EC226C2FE600B31FBD /* TripFunctions.swift in Sources */,
+				23BB5369227191B500C43C9E /* ActivitiesViewController.swift in Sources */,
 				2364C2D5226991E900B31FBD /* ViewController.swift in Sources */,
 				2364C2F2226C344900B31FBD /* TripsViewController.swift in Sources */,
 				23BB535A22703A4800C43C9E /* AddTripViewController.swift in Sources */,

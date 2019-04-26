@@ -43,6 +43,7 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
+		<string>BluelineParadise.ttf</string>
 		<string>ConeriaScript.ttf</string>
 		<string>StardustAdventure.ttf</string>
 		<string>Calypsoka.ttf</string>

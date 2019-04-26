@@ -20,6 +20,7 @@ class TripsTableViewCell: UITableViewCell {
         cardView.addShadowAndRoundedCorners();
         cardView.backgroundColor = Theme.Accent
         label.font = UIFont(name: Theme.tripListFontName, size: 40)
+        tripImageView.layer.cornerRadius = 20
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -30,7 +31,9 @@ class TripsTableViewCell: UITableViewCell {
     
     func setup(trip:Trip){
         label.text = trip.title
-        //tripImageView.image = UIImage(named: trip.imageString!)
+        if let image = trip.image{
+            tripImageView.image = UIImage(data: image)
+        }
     }
 
 }

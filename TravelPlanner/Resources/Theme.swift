@@ -11,6 +11,8 @@ class Theme {
     static let tripListFontName = "Coneria Script Demo"
     static let popUpLabelFontName = "Calypsoka"
     static let buttonFontName = "Stardust Adventure"
+    static let bodyFontName = "Blueline Paradise"
+    static let bodyBoldFontName = "Avenir Next-Bold"
     static let Accent = UIColor(named: "Accent")
     static let Background = UIColor(named: "Background")
     static let Tint = UIColor(named: "Tint")

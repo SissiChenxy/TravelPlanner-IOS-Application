@@ -80,10 +80,12 @@ class AddTripViewController: UIViewController{
         titleLabel.layer.shadowRadius = 5
         
         if let index = tripIndexToEdit {
-            let trip = TripFunctions.readTrips().fetchedObjects![index]
+            let trip = TripFunctions.readTrips()[index]
             tripTextField.text = trip.title
             titleLabel.text = "Edit Trip"
-            //imageView.image = UIImage(named: trip.imageString ?? "")
+            if let image = trip.image{
+                imageView.image = UIImage(data: image)
+            }
         }
     }
     
@@ -104,14 +106,17 @@ class AddTripViewController: UIViewController{
             return
         }
         
-//        let imageData = imageView.image!.jpegData(compressionQuality: 1)
-//        let imageString = imageData!.base64EncodedString(options: NSData.Base64EncodingOptions())
-//        print("imageString is :::")
-//        print(imageString)
         if let index = tripIndexToEdit{
-            TripFunctions.updateTrip(trip: TripFunctions.readTrips().fetchedObjects![index],title: tripTextField.text!)
+            if let image = imageView.image{
+                TripFunctions.updateTripWithImage(trip: TripFunctions.readTrips()[index],title: tripTextField.text!,image: image)
+            }
+            TripFunctions.updateTrip(trip: TripFunctions.readTrips()[index],title: tripTextField.text!)
         }else{
-            TripFunctions.createTrip(title: tripTextField.text!)
+            if let image = imageView.image{
+                TripFunctions.createTripWithImage(title: tripTextField.text!,image: image)
+            }else{
+                TripFunctions.createTrip(title: tripTextField.text!)
+            }
         }
         
         if let doneSaving = doneSaving{

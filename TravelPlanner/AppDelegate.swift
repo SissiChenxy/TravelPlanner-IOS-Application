@@ -14,9 +14,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let navBarAppearenceProxy = UINavigationBar.appearance()
+        navBarAppearenceProxy.barTintColor = Theme.Accent
+        
+        let font = UIFont(name:Theme.bodyFontName,size:50)
+        navBarAppearenceProxy.titleTextAttributes = [NSAttributedString.Key.font:font,NSAttributedString.Key.foregroundColor:UIColor.white]
         
         let app = UIApplication.shared.delegate as! AppDelegate
         let managedContext = app.persistentContainer.viewContext
@@ -25,6 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //TripFunctions.deleteTrip(title: "bbb")
         //TripFunctions.deleteTrip(title: "ccc")
+        
+        DayFunctions.createDay(title:"April 23th",subtitle:"Departure")
+        DayFunctions.createDay(title:"May 13th",subtitle:"Hotel")
     
         return true
     }
