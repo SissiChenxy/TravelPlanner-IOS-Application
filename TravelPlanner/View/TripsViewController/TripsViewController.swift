@@ -20,7 +20,7 @@ class TripsViewController: UIViewController{
         tableView.dataSource = self
         tableView.delegate = self
         
-        TripFunctions.readTrips()
+        //TripFunctions.readTrips()
         self.tableView.reloadData()
         view.backgroundColor = Theme.Background
         
@@ -28,7 +28,7 @@ class TripsViewController: UIViewController{
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let trips = TripFunctions.readTrips()
+        let trips = Data.tripList
         self.tableView.reloadData()
     }
     
@@ -38,7 +38,7 @@ class TripsViewController: UIViewController{
             popUp.tripIndexToEdit = self.index
             popUp.doneSaving = { [weak self] in
                 //parse the whole view controller into other view controller
-                TripFunctions.readTrips()
+                //TripFunctions.readTrips()
                 self?.tableView.reloadData()
             }
             index = nil
@@ -51,7 +51,7 @@ class TripsViewController: UIViewController{
 extension TripsViewController : UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let trips:[TripModel] = TripFunctions.readTrips() else {return 0}
+        guard let trips:[TripModel] = Data.tripList else {return 0}
         return trips.count
     }
     
@@ -65,7 +65,7 @@ extension TripsViewController : UITableViewDataSource, UITableViewDelegate{
 //            image = UIImage(data:filtedObjs[indexPath.row].img!)!
 //        }else{
 //            }
-        let trip = TripFunctions.readTrips()[indexPath.row]
+        let trip = Data.tripList[indexPath.row]
         
         cell.setup(trip: trip)
         
@@ -91,7 +91,7 @@ extension TripsViewController : UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
        
-        let trip:TripModel = TripFunctions.readTrips()[indexPath.row]
+        let trip:TripModel = Data.tripList[indexPath.row]
         
         let delete = UIContextualAction(style: .destructive, title: "Delete"){(contextualAction, view, actionPerformed:@escaping (Bool) -> ()) in
             
@@ -118,7 +118,7 @@ extension TripsViewController : UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: String(describing: ActivitiesViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! ActivitiesViewController
-        let trip = TripFunctions.readTrips()[indexPath.row] as! TripModel
+        let trip = Data.tripList[indexPath.row] as! TripModel
         vc.tripId = trip.id
         vc.tripTitle = trip.title
         print("trip.id is ::::")

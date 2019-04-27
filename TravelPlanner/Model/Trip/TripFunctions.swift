@@ -26,10 +26,10 @@ class TripFunctions{
         return trip
     }
     
-    static func readTrips() -> [TripModel]{
-        let tripList = Data.tripList
-        return tripList
-    }
+//    static func readTrips() -> [TripModel]{
+//        let tripList = Data.tripList
+//        return tripList
+//    }
     
     static func getTripInfo(id:UUID,completion: @escaping (TripModel?) -> ()){
         var tripmodel = TripModel(title: "")

@@ -79,12 +79,16 @@ class ActivitiesViewController: UIViewController {
         present(vc,animated: true)
     }
 
+    fileprivate func getTripIndex() -> Int! {
+        return Data.tripList.firstIndex(where: { (tripModel) -> Bool in
+            tripModel.id == tripId
+        })
+    }
+    
     func handleAddActivity(action:UIAlertAction){
         print("handel add activity")
         let vc = AddActivityViewController.getInstance() as! AddActivityViewController
-        vc.tripIndex = Data.tripList.firstIndex(where: { (tripModel) -> Bool in
-            tripModel.id == tripId
-        })
+        vc.tripIndex = getTripIndex()
         vc.tripModel = self.trip
         vc.doneSaving = { [weak self] dayIndex in
             guard let self = self else {return}
@@ -134,6 +138,82 @@ extension ActivitiesViewController: UITableViewDataSource, UITableViewDelegate{
         activityCell.setup(model: activity)
         return activityCell
     }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let edit = UIContextualAction(style: .normal, title: "Edit"){
+            (contextualAction, view, actionPerformed:@escaping (Bool) -> ()) in
+            let vc = AddActivityViewController.getInstance() as! AddActivityViewController
+            
+            //which trip we are on
+            vc.tripModel = self.trip
+            
+            //which trip we are working with
+            vc.tripIndex = self.getTripIndex()
+            
+            //which day we are on
+            vc.dayIndexToEdit = indexPath.section
+            
+            //which activity we are editing
+            vc.activityModelToEdit = self.trip?.dayList[indexPath.section].activityList[indexPath.row]
+            
+            //what do we want to happen after the activity is saved
+            vc.doneUpdating = { [weak self] oldDayIndex,newDayIndex,activityModel in
+                guard let self = self else{return}
+                
+                if oldDayIndex == newDayIndex{
+                    //1.update the local table data
+                    let oldActivityIndex = (self.trip?.dayList[oldDayIndex].activityList.firstIndex(of: activityModel))
+                    self.trip?.dayList[newDayIndex].activityList[oldActivityIndex!] = activityModel
+                    //2.refresh just that row
+                    let indexPath = IndexPath(row:oldActivityIndex!,section:newDayIndex)
+                    tableView.reloadRows(at:[indexPath],with:.automatic)
+                }else{
+                    //activity moved to a different day
+                    
+                    //1.insert activity into new location
+                    let lastIndex = (self.trip?.dayList[newDayIndex].activityList.count)! - 1
+                    //2.update table rows
+                    tableView.performBatchUpdates({
+                        tableView.deleteRows(at: [indexPath], with: .automatic)
+                        let insertIndexPath = IndexPath(row: lastIndex, section: newDayIndex)
+                        tableView.insertRows(at: [insertIndexPath], with: .automatic)
+                    })
+                }
+            }
+            self.present(vc,animated: true)
+            actionPerformed(false)
+        }
+        edit.image = #imageLiteral(resourceName: "editIcon")
+        edit.backgroundColor = Theme.Edit
+        
+        return UISwipeActionsConfiguration(actions: [edit])
+    }
 
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let activity:ActivityModel = trip!.dayList[indexPath.section].activityList[indexPath.row]
+        
+        let delete = UIContextualAction(style: .destructive, title: "Delete"){(contextualAction, view, actionPerformed:@escaping (Bool) -> ()) in
+            
+            let alert = UIAlertController(title: "Delete Activity", message: "Are you sure you want to delete this activity: \(activity.title)?", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Delete", style:.default,handler: {
+                (alertAction) in
+                ActivityFunctions.deleteActivity(at: self.getTripIndex(), for: indexPath.section, using: activity)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                actionPerformed(true)
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style:.cancel,handler: {
+                (alertAction) in
+                actionPerformed(false)
+            }))
+            self.present(alert, animated: true)
+        }
+        delete.image = #imageLiteral(resourceName: "deleteIcon")
+        delete.backgroundColor = Theme.Delete
+        return UISwipeActionsConfiguration(actions: [delete])
+    }
 
 }

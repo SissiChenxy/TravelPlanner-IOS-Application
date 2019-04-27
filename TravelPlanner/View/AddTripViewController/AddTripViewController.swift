@@ -80,7 +80,7 @@ class AddTripViewController: UIViewController{
         titleLabel.layer.shadowRadius = 5
         
         if let index = tripIndexToEdit {
-            let trip = TripFunctions.readTrips()[index]
+            let trip = Data.tripList[index]
             tripTextField.text = trip.title
             titleLabel.text = "Edit Trip"
             if let image = trip.image{
@@ -108,9 +108,9 @@ class AddTripViewController: UIViewController{
         
         if let index = tripIndexToEdit{
             if let image = imageView.image{
-                TripFunctions.updateTripWithImage(trip: TripFunctions.readTrips()[index],title: tripTextField.text!,image: image)
+                TripFunctions.updateTripWithImage(trip: Data.tripList[index],title: tripTextField.text!,image: image)
             }
-            TripFunctions.updateTrip(trip: TripFunctions.readTrips()[index],title: tripTextField.text!)
+            TripFunctions.updateTrip(trip: Data.tripList[index],title: tripTextField.text!)
         }else{
             print("imageView.image")
             print(imageView.image)

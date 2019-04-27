@@ -16,30 +16,44 @@ class AddActivityViewController: UIViewController {
     @IBOutlet weak var subtitleTextField: UITextField!
     
     var doneSaving:((Int) -> ())?
+    var doneUpdating:((Int,Int,ActivityModel) -> ())?
     
     @IBOutlet var activityTypeButtons: [UIButton]!
     var tripIndex:Int!
+    var dayIndexToEdit:Int!
     var tripModel: TripModel!
+    var activityModelToEdit : ActivityModel!
     
     @IBAction func activityTypeSelected(_ sender: UIButton) {
         activityTypeButtons.forEach({$0.tintColor = Theme.Delete })
         sender.tintColor = Theme.Tint
     }
     @IBAction func save(_ sender: AppButton) {
-        let activityType: ActivityType = getSelectedActivityType()
-        
         guard titleTextField.hasValue, let newTitle = titleTextField.text else{return}
         guard subtitleTextField.hasValue, let newSubTitle = subtitleTextField.text else{return}
+        let activityType: ActivityType = getSelectedActivityType()
 
-        let activityModel = ActivityModel(title: newTitle, subtitle: newSubTitle,activityType: activityType)
+        let newDayIndex = pickerView.selectedRow(inComponent: 0)
         
-        let dayIndex = pickerView.selectedRow(inComponent: 0)
-        print("count before updating")
-        print(tripModel.dayList[dayIndex].activityList.count)
-        
-        ActivityFunctions.createActivity(at: tripIndex, index: dayIndex, activity: activityModel)
-        if let doneSaving = doneSaving{
-            doneSaving(dayIndex)
+        if activityModelToEdit != nil{
+            activityModelToEdit.activityType = activityType
+            activityModelToEdit.title = newTitle
+            activityModelToEdit.subtitle = newSubTitle
+            
+            ActivityFunctions.updateActivity(at: tripIndex, oldDayIndex: dayIndexToEdit!, newDayIndex: newDayIndex, using: activityModelToEdit)
+            
+            if let doneUpdating = doneUpdating, let oldDayIndex = dayIndexToEdit{
+                doneUpdating(oldDayIndex,newDayIndex,activityModelToEdit)
+            }
+        }else{
+            let activityModel = ActivityModel(title: newTitle, subtitle: newSubTitle,activityType: activityType)
+            
+            let dayIndex = pickerView.selectedRow(inComponent: 0)
+            
+            ActivityFunctions.createActivity(at: tripIndex, index: dayIndex, activity: activityModel)
+            if let doneSaving = doneSaving{
+                doneSaving(dayIndex)
+            }
         }
         dismiss(animated: true, completion: nil)
     }
@@ -62,6 +76,17 @@ class AddActivityViewController: UIViewController {
         titleLabel.font = UIFont(name: Theme.popUpLabelFontName, size: 40)
         pickerView.dataSource = self
         pickerView.delegate = self
+        if let dayIndex = dayIndexToEdit, let activityModel = activityModelToEdit{
+            titleLabel.text = "Edit Activity"
+            pickerView.selectRow(dayIndex, inComponent: 0, animated:true)
+            
+            activityTypeSelected(activityTypeButtons[activityModel.activityType.rawValue])
+            
+            titleTextField.text = activityModel.title
+            subtitleTextField.text = activityModel.subtitle
+        }else{
+            activityTypeSelected(activityTypeButtons[ActivityType.Tour.rawValue])
+        }
         // Do any additional setup after loading the view.
     }
 
