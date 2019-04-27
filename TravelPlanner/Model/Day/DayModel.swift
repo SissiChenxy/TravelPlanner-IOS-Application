@@ -9,11 +9,11 @@
 import Foundation
 class DayModel{
     var id:UUID
-    var title:String = ""
+    var title = Date()
     var subtitle:String = ""
     var activityList = [ActivityModel]()
     
-    init(title:String, subtitle: String,activityList:[ActivityModel]? = nil ) {
+    init(title:Date, subtitle: String,activityList:[ActivityModel]? = nil ) {
         id = UUID()
         self.title = title
         self.subtitle = subtitle
@@ -23,3 +23,14 @@ class DayModel{
     }
 }
 
+extension DayModel : Comparable{
+    static func < (lhs: DayModel, rhs: DayModel) -> Bool {
+        return lhs.title < rhs.title
+    }
+    
+    static func == (lhs: DayModel, rhs: DayModel) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    
+}

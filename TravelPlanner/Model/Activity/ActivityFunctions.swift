@@ -13,5 +13,7 @@ class ActivityFunctions{
         let trip = Data.tripList[at]
         let day = trip.dayList[index]
         day.activityList.append(activity)
+        print("count after updating::::")
+        print(day.activityList.count)
     }
 }

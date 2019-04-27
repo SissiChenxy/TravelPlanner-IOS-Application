@@ -14,7 +14,11 @@ class TripModel{
     let id: UUID
     var title: String = ""
     var image:UIImage?
-    var dayList = [DayModel]()
+    var dayList = [DayModel](){
+        didSet{
+            dayList = dayList.sorted(by: < )
+        }
+    }
     
     init(title:String,image: UIImage? = nil,dayModels: [DayModel]? = nil) {
         self.id = UUID()

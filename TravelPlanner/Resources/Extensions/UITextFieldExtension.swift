@@ -9,6 +9,7 @@
 import UIKit
 
 extension UITextField{
+    
     var hasValue:Bool{
         guard text == "" else {return true}
         

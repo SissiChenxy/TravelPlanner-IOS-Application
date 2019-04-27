@@ -10,9 +10,9 @@ import Foundation
 class MockData{
     static func createMockData(){
         TripFunctions.createTrip(title: "trip new york")
-        let day1 = DayModel(title: "day1", subtitle: "day1")
-        let day2 = DayModel(title: "day2", subtitle: "day2")
-        let day3 = DayModel(title: "day3", subtitle: "day3")
+        let day1 = DayModel(title: Date(), subtitle: "Exploring")
+        let day2 = DayModel(title: Date().add(days: 1), subtitle: "day2")
+        let day3 = DayModel(title: Date().add(days: 2), subtitle: "day3")
         DayFunctions.createDay(at: 0, dayModel: day1)
         DayFunctions.createDay(at: 0, dayModel: day2)
         DayFunctions.createDay(at: 0, dayModel: day3)

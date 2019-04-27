@@ -10,19 +10,23 @@ import UIKit
 
 class AddDayViewController: UIViewController {
     
-    var trip:TripModel?
+    var trip:TripModel!
     var tripIndex:Int!
 
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var subtitleTextField: UITextField!
+    @IBOutlet weak var timePicker: UIDatePicker!
     
     //identifier for other viewcontroller to find
-    var doneSaving:(() -> ())?
+    var doneSaving:((DayModel) -> ())?
     
+    @IBAction func done(_ sender: UITextField) {
+        sender.resignFirstResponder()
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -40,18 +44,33 @@ class AddDayViewController: UIViewController {
     
     @IBAction func save(_ sender: UIButton) {
         //call back function which need to be implemented in other controller
-        guard titleTextField.hasValue, let newTitle = titleTextField.text else{return}
+        if alreadyExisted(date: timePicker.date) {
+            let alert = UIAlertController(title: "Day already existed!", message: "choose another day", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style:.cancel)
+            alert.addAction(okAction)
+            self.present(alert, animated: true)
+            return
+        }
         
-        guard subtitleTextField.hasValue, let newSubTitle = titleTextField.text else{return}
+        guard subtitleTextField.hasValue, let newSubTitle = subtitleTextField.text else{return}
         
-        let dayModel = DayModel(title: newTitle, subtitle: newSubTitle,activityList: nil)
+        let dayModel = DayModel(title: timePicker.date, subtitle: newSubTitle,activityList: nil)
             
         DayFunctions.createDay(at:tripIndex,dayModel: dayModel)
         
         if let doneSaving = doneSaving{
-            doneSaving()
+            doneSaving(dayModel)
         }
         dismiss(animated: true, completion: nil)
+    }
+    
+    func alreadyExisted(date:Date) -> Bool{
+        if trip.dayList.contains(where: {(dayModel) -> Bool in
+            dayModel.title.mediumDate() == date.mediumDate()
+        }){
+            return true
+        }
+        return false
     }
 
     /*

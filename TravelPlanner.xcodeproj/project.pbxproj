@@ -46,6 +46,7 @@
 		23BB539222730C7E00C43C9E /* ActivityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BB539122730C7E00C43C9E /* ActivityType.swift */; };
 		23F222582273A37100518CF8 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F222572273A37100518CF8 /* MockData.swift */; };
 		23F2225A2273A82900518CF8 /* ActivityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F222592273A82900518CF8 /* ActivityFunctions.swift */; };
+		23F2225C2273BCA700518CF8 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F2225B2273BCA700518CF8 /* DateExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +91,7 @@
 		23BB539122730C7E00C43C9E /* ActivityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityType.swift; sourceTree = "<group>"; };
 		23F222572273A37100518CF8 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		23F222592273A82900518CF8 /* ActivityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityFunctions.swift; sourceTree = "<group>"; };
+		23F2225B2273BCA700518CF8 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,7 @@
 				23BB53522270323100C43C9E /* UIButtonExtension.swift */,
 				23BB537F2272E89D00C43C9E /* UIViewControllerExtension.swift */,
 				23BB53862272EB6400C43C9E /* UITextFieldExtension.swift */,
+				23F2225B2273BCA700518CF8 /* DateExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				23BB538D227309EF00C43C9E /* TripModel.swift in Sources */,
 				23BB5346226FE0FA00C43C9E /* UIViewExtension.swift in Sources */,
 				23BB53642270440800C43C9E /* AppButton.swift in Sources */,
+				23F2225C2273BCA700518CF8 /* DateExtension.swift in Sources */,
 				23BB539022730B5200C43C9E /* ActivityModel.swift in Sources */,
 				23BB535D2270406500C43C9E /* PopUpUIView.swift in Sources */,
 				23BB5343226DA55D00C43C9E /* TripsTableViewCell.swift in Sources */,

@@ -53,6 +53,11 @@ class ActivitiesViewController: UIViewController {
         let dayAction = UIAlertAction(title: "Day", style: .default,handler: handleAddDay)
         let activityAction = UIAlertAction(title: "Activity", style: .default,handler: handleAddActivity)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        if trip?.dayList.count == 0 {
+            activityAction.isEnabled = false
+        }
+        
         alert.addAction(dayAction)
         alert.addAction(activityAction)
         alert.addAction(cancelAction)
@@ -65,21 +70,31 @@ class ActivitiesViewController: UIViewController {
         vc.tripIndex = Data.tripList.firstIndex(where: { (tripModel) -> Bool in
             tripModel.id == tripId
         })
-        vc.doneSaving = { [weak self] in
+        vc.trip = self.trip
+        vc.doneSaving = { [weak self] dayModel in
             guard let self = self else {return}
-            self.updateTableViewWithTripData()
+            let indexArray = [self.trip?.dayList.firstIndex(of: dayModel) ?? 0]
+            self.tableView.insertSections(IndexSet(indexArray), with: UITableView.RowAnimation.automatic)
         }
         present(vc,animated: true)
     }
 
     func handleAddActivity(action:UIAlertAction){
-//        let vc = AddActivityViewController.getInstance() as! AddActivityViewController
-//        vc.tripIndex = Data.tripList.firstIndex(where: { (tripModel) -> Bool in
-//            tripModel.id == tripId
-//        })
-//        present(vc,animated: true)
+        print("handel add activity")
+        let vc = AddActivityViewController.getInstance() as! AddActivityViewController
+        vc.tripIndex = Data.tripList.firstIndex(where: { (tripModel) -> Bool in
+            tripModel.id == tripId
+        })
+        vc.tripModel = self.trip
+        vc.doneSaving = { [weak self] dayIndex in
+            guard let self = self else {return}
+            let row = (self.trip?.dayList[dayIndex].activityList.count)! - 1
+            let indexPath = IndexPath(row:row,section: dayIndex)
+            self.tableView.insertRows(at: [indexPath], with: .automatic)
+        }
+        present(vc,animated: true)
     }
-
+        
 }
 
 extension ActivitiesViewController: UITableViewDataSource, UITableViewDelegate{
@@ -88,11 +103,7 @@ extension ActivitiesViewController: UITableViewDataSource, UITableViewDelegate{
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-
-
         let day = trip?.dayList[section] as! DayModel
-        print("day.title")
-        print(day.title)
         let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderTableViewCell
                 cell.setup(model: day)
         return cell.contentView
@@ -104,7 +115,7 @@ extension ActivitiesViewController: UITableViewDataSource, UITableViewDelegate{
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let day = trip?.dayList[section] as! DayModel
-        let title = day.title ?? ""
+        let title = "\(day.title)" ?? ""
         let subtitle = day.subtitle ?? ""
         return "\(title) - \(subtitle)"
     }
