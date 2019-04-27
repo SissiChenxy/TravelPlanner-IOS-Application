@@ -115,7 +115,9 @@ class AddTripViewController: UIViewController{
             print("imageView.image")
             print(imageView.image)
             if let image = imageView.image{
-                TripFunctions.createTripWithImage(title: tripTextField.text!,image: image)
+                let trip = TripFunctions.createTripWithImage(title: tripTextField.text!,image: image)
+                print("trip.image")
+                print(trip.image)
             }else{
                 TripFunctions.createTrip(title: tripTextField.text!)
             }

@@ -31,8 +31,6 @@ class TripsTableViewCell: UITableViewCell {
     
     func setup(trip:TripModel){
         label.text = trip.title
-        print("whether is image&&&&")
-        print(trip.image)
         if let image = trip.image{
             tripImageView.image = image
         }

@@ -23,13 +23,10 @@ class TripFunctions{
         print(image)
         let trip = TripModel(title: title,image: image)
         Data.tripList.append(trip)
+        print("trip.image")
+        print(trip.image)
         return trip
     }
-    
-//    static func readTrips() -> [TripModel]{
-//        let tripList = Data.tripList
-//        return tripList
-//    }
     
     static func getTripInfo(id:UUID,completion: @escaping (TripModel?) -> ()){
         var tripmodel = TripModel(title: "")

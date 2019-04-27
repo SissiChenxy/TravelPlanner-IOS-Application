@@ -23,7 +23,7 @@ class TripModel{
     init(title:String,image: UIImage? = nil,dayModels: [DayModel]? = nil) {
         self.id = UUID()
         self.title = title
-        //self.image = image
+        self.image = image
         
         if let dayModels = dayModels{
             self.dayList = dayModels
