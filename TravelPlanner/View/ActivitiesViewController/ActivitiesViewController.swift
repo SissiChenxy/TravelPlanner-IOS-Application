@@ -98,7 +98,13 @@ class ActivitiesViewController: UIViewController {
         }
         present(vc,animated: true)
     }
-        
+    
+    
+    @IBAction func toggleEditMode(_ sender: UIBarButtonItem) {
+        tableView.isEditing.toggle()
+        sender.title = sender.title == "Edit" ? "Done" : "Edit"
+    }
+
 }
 
 extension ActivitiesViewController: UITableViewDataSource, UITableViewDelegate{
@@ -214,6 +220,20 @@ extension ActivitiesViewController: UITableViewDataSource, UITableViewDelegate{
         delete.image = #imageLiteral(resourceName: "deleteIcon")
         delete.backgroundColor = Theme.Delete
         return UISwipeActionsConfiguration(actions: [delete])
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section >= 0 {
+            return true
+        }
+        return false
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        //1.get the current activity
+        let activityModel = (trip?.dayList[sourceIndexPath.section].activityList[sourceIndexPath.row])!
+        //update the data
+        ActivityFunctions.reorderActivity(at: getTripIndex(), oldDayIndex: sourceIndexPath.section, newDayIndex: destinationIndexPath.section, newActivityIndex: destinationIndexPath.row, activityModel: activityModel)
     }
 
 }

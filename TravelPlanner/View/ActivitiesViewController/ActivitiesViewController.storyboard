@@ -12,7 +12,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Activities View Controller-->
+        <!--Title-->
         <scene sceneID="Zu4-JK-AOn">
             <objects>
                 <viewController id="akx-BD-8iW" customClass="ActivitiesViewController" customModule="TravelPlanner" customModuleProvider="target" sceneMemberID="viewController">
@@ -75,7 +75,7 @@
                                             <outlet property="titleLabel" destination="ehe-dZ-PSf" id="PTx-x6-Jep"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="activityCell" rowHeight="80" id="tw4-Ey-62c" customClass="ActivityTableViewCell" customModule="TravelPlanner" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="activityCell" rowHeight="80" id="tw4-Ey-62c" customClass="ActivityTableViewCell" customModule="TravelPlanner" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tw4-Ey-62c" id="dLC-qB-j9m">
@@ -164,6 +164,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JAc-Vq-cz1"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="HIT-kJ-3jS">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="6CL-tq-e2t">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="toggleEditMode:" destination="akx-BD-8iW" id="ImH-dV-Q4x"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="n5t-Oq-TIl" id="Blb-UF-eqX"/>
                         <outlet property="backgroundImageView" destination="OXn-LT-af6" id="bxL-qu-rdT"/>
